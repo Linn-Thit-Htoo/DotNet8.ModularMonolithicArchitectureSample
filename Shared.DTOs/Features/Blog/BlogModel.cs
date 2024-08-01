@@ -1,16 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿namespace Shared.DTOs.Features.Blog;
 
-namespace Shared.DTOs.Features.Blog
+public class BlogModel
 {
-    public class BlogModel
-    {
-        public int BlogId { get; set; }
-        public string BlogTitle { get; set; }
-        public string BlogAuthor { get; set; }
-        public string BlogContent { get; set; }
-    }
+    public int BlogId { get; set; }
+    public string BlogTitle { get; set; }
+    public string BlogAuthor { get; set; }
+    public string BlogContent { get; set; }
 }
