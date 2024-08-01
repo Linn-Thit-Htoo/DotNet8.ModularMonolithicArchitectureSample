@@ -45,7 +45,7 @@ public class BlogService : IBlogService
         return responseModel;
     }
 
-    public async Task<Result<BlogResponseModel>> UpdateBlog(BlogRequestModel requestModel, int id)
+    public async Task<Result<BlogResponseModel>> UpdateBlog(BlogRequestModel requestModel, int id, CancellationToken cancellationToken)
     {
         Result<BlogResponseModel> responseModel;
         try
@@ -62,7 +62,7 @@ public class BlogService : IBlogService
             item.BlogContent = requestModel.BlogContent;
 
             _context.Tbl_Blogs.Update(item);
-            await _context.SaveChangesAsync();
+            await _context.SaveChangesAsync(cancellationToken);
 
             responseModel = Result<BlogResponseModel>.UpdateSuccessResult();
         }

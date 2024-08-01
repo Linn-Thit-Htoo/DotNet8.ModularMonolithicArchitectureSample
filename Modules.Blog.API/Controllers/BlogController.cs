@@ -2,6 +2,7 @@
 using Modules.Blog.Application.Features.Blog.CreateBlog;
 using Modules.Blog.Application.Features.Blog.DeleteBlog;
 using Modules.Blog.Application.Features.Blog.GetBlogList;
+using Modules.Blog.Application.Features.Blog.UpdateBlog;
 
 namespace Modules.Blog.API.Controllers;
 
@@ -39,7 +40,9 @@ public class BlogController : ControllerBase
     [HttpPut("{id}")]
     public async Task<IActionResult> UpdateBlog([FromBody] BlogRequestModel requestModel, int id)
     {
-        var result = await _blogService.UpdateBlog(requestModel, id);
+        var command = new UpdateBlogCommand() { BlogId = id, RequestModel = requestModel };
+        var result = await _mediator.Send(command);
+
         return Ok(result);
     }
 
