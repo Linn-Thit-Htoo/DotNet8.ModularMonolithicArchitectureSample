@@ -8,14 +8,32 @@ public class Result<T>
     public bool IsSuccess { get; set; }
     public bool IsError => !IsSuccess;
 
-    public static Result<T> SuccessResult(string message = "Success.", EnumStatusCode statusCode = EnumStatusCode.Success)
+    public static Result<T> SuccessResult(
+        string message = "Success.",
+        EnumStatusCode statusCode = EnumStatusCode.Success
+    )
     {
-        return new Result<T> { IsSuccess = true, Message = message, StatusCode = statusCode };
+        return new Result<T>
+        {
+            IsSuccess = true,
+            Message = message,
+            StatusCode = statusCode
+        };
     }
 
-    public static Result<T> SuccessResult(T data, string message = "Success.", EnumStatusCode statusCode = EnumStatusCode.Success)
+    public static Result<T> SuccessResult(
+        T data,
+        string message = "Success.",
+        EnumStatusCode statusCode = EnumStatusCode.Success
+    )
     {
-        return new Result<T> { Data = data, IsSuccess = true, Message = message, StatusCode = statusCode };
+        return new Result<T>
+        {
+            Data = data,
+            IsSuccess = true,
+            Message = message,
+            StatusCode = statusCode
+        };
     }
 
     public static Result<T> SaveSuccessResult(string message = "Saving Successful.")
@@ -33,14 +51,27 @@ public class Result<T>
         return Result<T>.SuccessResult(message);
     }
 
-    public static Result<T> FailureResult(string message = "Fail.", EnumStatusCode statusCode = EnumStatusCode.BadRequest)
+    public static Result<T> FailureResult(
+        string message = "Fail.",
+        EnumStatusCode statusCode = EnumStatusCode.BadRequest
+    )
     {
-        return new Result<T> { IsSuccess = false, Message = message, StatusCode = statusCode };
+        return new Result<T>
+        {
+            IsSuccess = false,
+            Message = message,
+            StatusCode = statusCode
+        };
     }
 
     public static Result<T> FailureResult(Exception ex)
     {
-        return new Result<T> { IsSuccess = false, Message = ex.ToString(), StatusCode = EnumStatusCode.InternalServerError };
+        return new Result<T>
+        {
+            IsSuccess = false,
+            Message = ex.ToString(),
+            StatusCode = EnumStatusCode.InternalServerError
+        };
     }
 
     public static Result<T> NotFoundResult(string message = "No Data Found.")
