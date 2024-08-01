@@ -7,7 +7,6 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Folder Include="Features\Blog\GetBlogList\" />
     <Folder Include="Features\Blog\UpdateBlog\" />
   </ItemGroup>
 

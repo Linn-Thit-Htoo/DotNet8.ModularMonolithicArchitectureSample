@@ -9,12 +9,12 @@ public class BlogService : IBlogService
         _context = context;
     }
 
-    public async Task<Result<BlogListResponseModel>> GetBlogList()
+    public async Task<Result<BlogListResponseModel>> GetBlogList(CancellationToken cancellationToken)
     {
         Result<BlogListResponseModel> responseModel;
         try
         {
-            var lst = await _context.Tbl_Blogs.OrderByDescending(x => x.BlogId).ToListAsync();
+            var lst = await _context.Tbl_Blogs.OrderByDescending(x => x.BlogId).ToListAsync(cancellationToken);
             responseModel = Result<BlogListResponseModel>.SuccessResult(
                 new BlogListResponseModel { DataLst = lst.Select(x => x.Map()).ToList() }
             );

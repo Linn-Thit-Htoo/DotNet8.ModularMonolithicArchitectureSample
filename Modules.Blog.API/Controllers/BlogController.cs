@@ -1,6 +1,7 @@
 ﻿using MediatR;
 using Modules.Blog.Application.Features.Blog.CreateBlog;
 using Modules.Blog.Application.Features.Blog.DeleteBlog;
+using Modules.Blog.Application.Features.Blog.GetBlogList;
 
 namespace Modules.Blog.API.Controllers;
 
@@ -20,7 +21,9 @@ public class BlogController : ControllerBase
     [HttpGet]
     public async Task<IActionResult> GetBlogs()
     {
-        var result = await _blogService.GetBlogList();
+        var query = new GetBlogListQuery();
+        var result = await _mediator.Send(query);
+
         return Ok(result);
     }
 
