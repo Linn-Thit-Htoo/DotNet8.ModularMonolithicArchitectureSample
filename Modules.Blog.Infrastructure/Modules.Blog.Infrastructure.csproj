@@ -13,6 +13,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\Modules.Blog.Domain\Modules.Blog.Domain.csproj" />
+    <ProjectReference Include="..\Shared.DTOs\Shared.DTOs.csproj" />
   </ItemGroup>
 
 </Project>
