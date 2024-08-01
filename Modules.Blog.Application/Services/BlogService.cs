@@ -27,13 +27,13 @@ public class BlogService : IBlogService
         return responseModel;
     }
 
-    public async Task<Result<BlogResponseModel>> CreateBlog(BlogRequestModel requestModel)
+    public async Task<Result<BlogResponseModel>> CreateBlog(BlogRequestModel requestModel, CancellationToken cancellationToken)
     {
         Result<BlogResponseModel> responseModel;
         try
         {
             await _context.Tbl_Blogs.AddAsync(requestModel.Map());
-            await _context.SaveChangesAsync();
+            await _context.SaveChangesAsync(cancellationToken);
 
             responseModel = Result<BlogResponseModel>.SaveSuccessResult();
         }
@@ -75,7 +75,7 @@ public class BlogService : IBlogService
         return responseModel;
     }
 
-    public async Task<Result<BlogResponseModel>> DeleteBlog(int id)
+    public async Task<Result<BlogResponseModel>> DeleteBlog(int id, CancellationToken cancellationToken)
     {
         Result<BlogResponseModel> responseModel;
         try
@@ -88,7 +88,7 @@ public class BlogService : IBlogService
             }
 
             _context.Tbl_Blogs.Remove(item);
-            await _context.SaveChangesAsync();
+            await _context.SaveChangesAsync(cancellationToken);
 
             responseModel = Result<BlogResponseModel>.DeleteSuccessResult();
         }
