@@ -1,7 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
 using Modules.Blog.Application.Services;
-using Modules.Blog.Domain.Interfaces;
 using Modules.Blog.Infrastructure.Db;
 
 namespace Modules.Blog.API.Extensions

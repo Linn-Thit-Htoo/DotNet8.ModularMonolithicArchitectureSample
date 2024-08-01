@@ -1,10 +1,4 @@
-﻿using Microsoft.AspNetCore.Antiforgery;
-using Microsoft.AspNetCore.Http;
-using Microsoft.AspNetCore.Mvc;
-using Modules.Blog.Domain.Interfaces;
-using Shared.DTOs.Features.Blog;
-
-namespace Modules.Blog.API.Controllers
+﻿namespace Modules.Blog.API.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
