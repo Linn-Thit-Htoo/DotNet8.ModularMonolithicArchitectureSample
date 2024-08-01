@@ -3,6 +3,7 @@
 global using Microsoft.AspNetCore.Mvc;
 global using Microsoft.EntityFrameworkCore;
 global using Modules.Blog.API.Extensions;
+global using Modules.Blog.Application.Extensions;
 global using Modules.Blog.Application.Services;
 global using Modules.Blog.Domain.Interfaces;
 global using Modules.Blog.Infrastructure.Db;

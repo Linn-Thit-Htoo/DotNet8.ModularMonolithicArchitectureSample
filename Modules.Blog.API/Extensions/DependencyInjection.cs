@@ -1,6 +1,4 @@
-﻿using Microsoft.Extensions.DependencyInjection;
-
-namespace Modules.Blog.API.Extensions;
+﻿namespace Modules.Blog.API.Extensions;
 
 public static class DependencyInjection
 {

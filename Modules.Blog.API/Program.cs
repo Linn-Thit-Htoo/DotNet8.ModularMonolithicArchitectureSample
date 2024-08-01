@@ -1,5 +1,3 @@
-using Modules.Blog.Application.Extensions;
-
 var builder = WebApplication.CreateBuilder(args);
 
 builder.Services.AddControllers();
