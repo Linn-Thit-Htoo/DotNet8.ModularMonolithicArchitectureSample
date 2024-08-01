@@ -1,23 +1,24 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿namespace Modules.Blog.Application.Features.Blog.UpdateBlog;
 
-namespace Modules.Blog.Application.Features.Blog.UpdateBlog
+public class UpdateBlogCommandHandler
+    : IRequestHandler<UpdateBlogCommand, Result<BlogResponseModel>>
 {
-    public class UpdateBlogCommandHandler : IRequestHandler<UpdateBlogCommand, Result<BlogResponseModel>>
+    private readonly IBlogService _blogService;
+
+    public UpdateBlogCommandHandler(IBlogService blogService)
     {
-        private readonly IBlogService _blogService;
+        _blogService = blogService;
+    }
 
-        public UpdateBlogCommandHandler(IBlogService blogService)
-        {
-            _blogService = blogService;
-        }
-
-        public async Task<Result<BlogResponseModel>> Handle(UpdateBlogCommand request, CancellationToken cancellationToken)
-        {
-            return await _blogService.UpdateBlog(request.RequestModel, request.BlogId, cancellationToken);
-        }
+    public async Task<Result<BlogResponseModel>> Handle(
+        UpdateBlogCommand request,
+        CancellationToken cancellationToken
+    )
+    {
+        return await _blogService.UpdateBlog(
+            request.RequestModel,
+            request.BlogId,
+            cancellationToken
+        );
     }
 }
