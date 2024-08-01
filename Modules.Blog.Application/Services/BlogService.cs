@@ -36,5 +36,79 @@ namespace Modules.Blog.Application.Services
 
             return responseModel;
         }
+
+        public async Task<Result<BlogResponseModel>> CreateBlog(BlogRequestModel requestModel)
+        {
+            Result<BlogResponseModel> responseModel;
+            try
+            {
+                await _context.Tbl_Blogs.AddAsync(requestModel.Map());
+                await _context.SaveChangesAsync();
+
+                responseModel = Result<BlogResponseModel>.SaveSuccessResult();
+            }
+            catch (Exception ex)
+            {
+                responseModel = Result<BlogResponseModel>.FailureResult(ex);
+            }
+
+            return responseModel;
+        }
+
+        public async Task<Result<BlogResponseModel>> UpdateBlog(BlogRequestModel requestModel, int id)
+        {
+            Result<BlogResponseModel> responseModel;
+            try
+            {
+                var item = await _context.Tbl_Blogs.FindAsync(id);
+                if (item is null)
+                {
+                    responseModel = Result<BlogResponseModel>.NotFoundResult();
+                    goto result;
+                }
+
+                item.BlogTitle = requestModel.BlogTitle;
+                item.BlogAuthor = requestModel.BlogAuthor;
+                item.BlogContent = requestModel.BlogContent;
+
+                _context.Tbl_Blogs.Update(item);
+                await _context.SaveChangesAsync();
+
+                responseModel = Result<BlogResponseModel>.UpdateSuccessResult();
+            }
+            catch (Exception ex)
+            {
+                responseModel = Result<BlogResponseModel>.FailureResult(ex);
+            }
+
+        result:
+            return responseModel;
+        }
+
+        public async Task<Result<BlogResponseModel>> DeleteBlog(int id)
+        {
+            Result<BlogResponseModel> responseModel;
+            try
+            {
+                var item = await _context.Tbl_Blogs.FindAsync(id);
+                if (item is null)
+                {
+                    responseModel = Result<BlogResponseModel>.NotFoundResult();
+                    goto result;
+                }
+
+                _context.Tbl_Blogs.Remove(item);
+                await _context.SaveChangesAsync();
+
+                responseModel = Result<BlogResponseModel>.DeleteSuccessResult();
+            }
+            catch (Exception ex)
+            {
+                responseModel = Result<BlogResponseModel>.FailureResult(ex);
+            }
+
+        result:
+            return responseModel;
+        }
     }
 }

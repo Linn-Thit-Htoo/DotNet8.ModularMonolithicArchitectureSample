@@ -25,6 +25,21 @@ namespace Shared.DTOs.Features
             return new Result<T> { Data = data, IsSuccess = true, Message = message, StatusCode = statusCode };
         }
 
+        public static Result<T> SaveSuccessResult(string message = "Saving Successful.")
+        {
+            return Result<T>.SuccessResult(message);
+        }
+
+        public static Result<T> UpdateSuccessResult(string message = "Updating Successful.")
+        {
+            return Result<T>.SuccessResult(message);
+        }
+
+        public static Result<T> DeleteSuccessResult(string message = "Deleting Successful.")
+        {
+            return Result<T>.SuccessResult(message);
+        }
+
         public static Result<T> FailureResult(string message = "Fail.", EnumStatusCode statusCode = EnumStatusCode.BadRequest)
         {
             return new Result<T> { IsSuccess = false, Message = message, StatusCode = statusCode };
@@ -33,6 +48,11 @@ namespace Shared.DTOs.Features
         public static Result<T> FailureResult(Exception ex)
         {
             return new Result<T> { IsSuccess = false, Message = ex.ToString(), StatusCode = EnumStatusCode.InternalServerError };
+        }
+
+        public static Result<T> NotFoundResult(string message = "No Data Found.")
+        {
+            return Result<T>.FailureResult(message, EnumStatusCode.NotFound);
         }
     }
 }
