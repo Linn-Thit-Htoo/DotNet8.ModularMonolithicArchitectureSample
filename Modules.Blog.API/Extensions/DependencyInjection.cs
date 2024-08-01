@@ -1,4 +1,6 @@
-﻿namespace Modules.Blog.API.Extensions;
+﻿using Microsoft.Extensions.DependencyInjection;
+
+namespace Modules.Blog.API.Extensions;
 
 public static class DependencyInjection
 {

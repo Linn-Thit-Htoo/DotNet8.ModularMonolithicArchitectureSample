@@ -1,3 +1,5 @@
+using Modules.Blog.Application.Extensions;
+
 var builder = WebApplication.CreateBuilder(args);
 
 builder.Services.AddControllers();
@@ -5,6 +7,8 @@ builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
 builder.Services.AddDependencyInjection(builder);
+
+builder.Services.AddApplication();
 
 var app = builder.Build();
 
