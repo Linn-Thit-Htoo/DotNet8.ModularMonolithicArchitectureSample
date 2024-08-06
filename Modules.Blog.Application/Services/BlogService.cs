@@ -9,6 +9,8 @@ public class BlogService : IBlogService
         _context = context;
     }
 
+    #region Get Blog List
+
     public async Task<Result<BlogListResponseModel>> GetBlogList(CancellationToken cancellationToken)
     {
         Result<BlogListResponseModel> responseModel;
@@ -26,6 +28,8 @@ public class BlogService : IBlogService
 
         return responseModel;
     }
+
+    #endregion
 
     public async Task<Result<BlogResponseModel>> CreateBlog(BlogRequestModel requestModel, CancellationToken cancellationToken)
     {
