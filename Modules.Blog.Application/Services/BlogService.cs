@@ -53,6 +53,8 @@ public class BlogService : IBlogService
 
     #endregion
 
+    #region Update Blog
+
     public async Task<Result<BlogResponseModel>> UpdateBlog(BlogRequestModel requestModel, int id, CancellationToken cancellationToken)
     {
         Result<BlogResponseModel> responseModel;
@@ -79,9 +81,11 @@ public class BlogService : IBlogService
             responseModel = Result<BlogResponseModel>.FailureResult(ex);
         }
 
-        result:
+    result:
         return responseModel;
     }
+
+    #endregion
 
     public async Task<Result<BlogResponseModel>> DeleteBlog(int id, CancellationToken cancellationToken)
     {
@@ -105,7 +109,7 @@ public class BlogService : IBlogService
             responseModel = Result<BlogResponseModel>.FailureResult(ex);
         }
 
-        result:
+    result:
         return responseModel;
     }
 }
