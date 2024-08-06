@@ -87,6 +87,8 @@ public class BlogService : IBlogService
 
     #endregion
 
+    #region Delete Blog
+
     public async Task<Result<BlogResponseModel>> DeleteBlog(int id, CancellationToken cancellationToken)
     {
         Result<BlogResponseModel> responseModel;
@@ -112,4 +114,6 @@ public class BlogService : IBlogService
     result:
         return responseModel;
     }
+
+    #endregion
 }
