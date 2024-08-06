@@ -31,6 +31,8 @@ public class BlogService : IBlogService
 
     #endregion
 
+    #region Create Blog
+
     public async Task<Result<BlogResponseModel>> CreateBlog(BlogRequestModel requestModel, CancellationToken cancellationToken)
     {
         Result<BlogResponseModel> responseModel;
@@ -48,6 +50,8 @@ public class BlogService : IBlogService
 
         return responseModel;
     }
+
+    #endregion
 
     public async Task<Result<BlogResponseModel>> UpdateBlog(BlogRequestModel requestModel, int id, CancellationToken cancellationToken)
     {
